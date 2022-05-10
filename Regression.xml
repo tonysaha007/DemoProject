@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression Test">
+	<test name="Complete Test">
+		<classes>
+			<class name="com.picresize.myimageresize.OpenBrowserTest"></class>
+			<class name="com.picresize.myimageresize.FileUploadForWindows"></class>
+			<class name="PageObjectModelWithReport.Login"></class>
+			<class name="PageObjectModelWithReport.ScreenshotsDemo"></class>
+		</classes>
+	</test>
+</suite>

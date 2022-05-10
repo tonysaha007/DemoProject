@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Somke Test">
+
+	<test name="Browser Openning">
+		<classes>
+			<class name="PageObjectModelWithReport.Login"></class>
+		</classes>
+	</test>
+</suite>
