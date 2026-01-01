@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "testng-1.0.dtd">
+
+<suite name="OrangeHRMSuite" parallel="tests" thread-count="8">
+	<listeners>
+		<listener class-name="com.orangehrm.listeners.TestListener"></listener>
+	</listeners>
+
+	<test name="OrangeHRMTest_firefox">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.orangehrm.test.LoginPageTest" />
+		</classes>
+	</test>
+</suite>
