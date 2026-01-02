@@ -84,7 +84,7 @@ public class BaseClass {
 
 		// Initialize ActionDriver for the current Thread
 		actionDriver.set(new ActionDriver(getDriver()));
-		logger.info("ActionDriver initlialized for thread: " + Thread.currentThread().getId());
+		logger.info("ActionDriver initlialized for thread: " + Thread.currentThread().getName());
 
 	}
 
@@ -96,6 +96,7 @@ public class BaseClass {
 		// String browser = prop.getProperty("browser");
 
 		boolean seleniumGrid = Boolean.parseBoolean(prop.getProperty("seleniumGrid"));
+		
 		String gridURL = prop.getProperty("gridURL");
 
 		if (seleniumGrid) {
@@ -194,10 +195,12 @@ public class BaseClass {
 		boolean seleniumGrid = Boolean
 				.parseBoolean(System.getProperty("seleniumGrid", prop.getProperty("seleniumGrid")));
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
+		
+		
 
 		// maximize the browser
 		
-		//getDriver().manage().window().maximize();
+		getDriver().manage().window().maximize();
 		Dimension size = getDriver().manage().window().getSize();
 		System.out.println("Window size: " + size);
 		// Navigate to URL
@@ -205,11 +208,13 @@ public class BaseClass {
 		 * try { getDriver().get(prop.getProperty("url")); } catch (Exception e) {
 		 * System.out.println("Failed to Navigate to the URL:" + e.getMessage()); }
 		 */
-
-		if (seleniumGrid) {
-			getDriver().get(prop.getProperty("url_grid"));
+		boolean dockerActive = Boolean.parseBoolean(prop.getProperty("dockerActive"));
+		if (seleniumGrid && dockerActive) {
+			getDriver().get(prop.getProperty("url_docker"));
+			logger.info("Navigating to Docker URL: "+ prop.getProperty("url_docker"));
 		} else {
 			getDriver().get(prop.getProperty("url_local"));
+			logger.info("Navigating to Local URL: "+ prop.getProperty("url_local"));
 		}
 	}
 
@@ -222,10 +227,10 @@ public class BaseClass {
 				System.out.println("unable to quit the driver:" + e.getMessage());
 			}
 		}
-		logger.info("WebDriver instance is closed for current thread: " + Thread.currentThread().getId());
+		logger.info("WebDriver instance is closed for current thread: " + Thread.currentThread().getName());
 		driver.remove();
 		actionDriver.remove();
-		logger.info("ActionDriver instance is removed for current thread: " + Thread.currentThread().getId());
+		logger.info("ActionDriver instance is removed for current thread: " + Thread.currentThread().getName());
 		// driver = null;
 		// actionDriver = null;
 		// ExtentManager.endTest(); --This has been implemented in TestListener

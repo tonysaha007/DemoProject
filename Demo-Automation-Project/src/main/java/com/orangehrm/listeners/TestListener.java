@@ -23,7 +23,7 @@ public class TestListener implements ITestListener, IAnnotationTransformer {
 	@Override
 	public void onTestStart(ITestResult result) {
 
-		String testName = result.getMethod().getMethodName()+" [ThreadID-"+Thread.currentThread().getId()+"]";
+		String testName = result.getMethod().getMethodName()+" [ThreadID-"+Thread.currentThread().getName()+"]";
 		// Start logging in Extent Reports
 		ExtentManager.startTest(testName);
 		ExtentManager.logStep("Test Started: " + testName);
@@ -37,10 +37,10 @@ public class TestListener implements ITestListener, IAnnotationTransformer {
 
 		if (!result.getTestClass().getName().toLowerCase().contains("api")) {
 			ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Test Passed Successfully!",
-					"Test End: " + testName + " - ✔ Test Passed"+" [ThreadID-"+Thread.currentThread().getId()+"]");
+					"Test End: " + testName + " - ✔ Test Passed"+" [ThreadID-"+Thread.currentThread().getName()+"]");
 			BaseClass.logger.info("Test End: " + testName + " - Test Passed");
 		} else {
-			ExtentManager.logStepValidationForAPI("Test End: " + testName + " - ✔ Test Passed"+" [ThreadID-"+Thread.currentThread().getId()+"]");
+			ExtentManager.logStepValidationForAPI("Test End: " + testName + " - ✔ Test Passed"+" [ThreadID-"+Thread.currentThread().getName()+"]");
 			BaseClass.logger.info("Test End: " + testName + " - Test Passed");
 		}
 
@@ -53,11 +53,11 @@ public class TestListener implements ITestListener, IAnnotationTransformer {
 		String failureMessage = result.getThrowable().getMessage();
 		ExtentManager.logStep(failureMessage);
 		if(!result.getTestClass().getName().toLowerCase().contains("api")) {
-			ExtentManager.logFailure(BaseClass.getDriver(), "Test Failed!", "Test End: " + testName + " - ❌ Test Failed"+" [ThreadID-"+Thread.currentThread().getId()+"]");
+			ExtentManager.logFailure(BaseClass.getDriver(), "Test Failed!", "Test End: " + testName + " - ❌ Test Failed"+" [ThreadID-"+Thread.currentThread().getName()+"]");
 			BaseClass.logger.info("Test End: " + testName + " - Test Failed");
 		}
 		else {
-			ExtentManager.logFailureAPI("Test End: " + testName + " - ❌ Test Failed"+" [ThreadID-"+Thread.currentThread().getId()+"]");
+			ExtentManager.logFailureAPI("Test End: " + testName + " - ❌ Test Failed"+" [ThreadID-"+Thread.currentThread().getName()+"]");
 			BaseClass.logger.info("Test End: " + testName + " - Test Failed");
 		}
 	}
