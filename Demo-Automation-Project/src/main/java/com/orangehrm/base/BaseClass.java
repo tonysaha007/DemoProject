@@ -111,12 +111,13 @@ public class BaseClass {
 					driver.set(new RemoteWebDriver(new URL(gridURL), options));
 				} else if (browser.equalsIgnoreCase("edge")) {
 					EdgeOptions options = new EdgeOptions();
-					options.addArguments("--headless=new", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage");
+					options.addArguments("--headless=new", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080");
 					driver.set(new RemoteWebDriver(new URL(gridURL), options));
+
 				} else {
 					throw new IllegalArgumentException("Browser Not Supported: " + browser);
 				}
-				logger.info("RemoteWebDriver instance created for Grid in headless mode");
+				logger.info(browser.toUpperCase()+ " - RemoteWebDriver instance created for Grid in headless mode");
 			} catch (MalformedURLException e) {
 				throw new RuntimeException("Invalid Grid URL", e);
 			}
@@ -200,9 +201,15 @@ public class BaseClass {
 
 		// maximize the browser
 		
-		getDriver().manage().window().maximize();
-		Dimension size = getDriver().manage().window().getSize();
-		System.out.println("Window size: " + size);
+		// Check if dimensions size is not 1920, 1080
+        Dimension size = getDriver().manage().window().getSize();
+        if (size.getWidth() != 1920 && size.getHeight() != 1080) {
+            // Maximize the browser
+            getDriver().manage().window().maximize();
+            logger.info("Browser window maximized.");
+        }
+		System.out.println("Final Window size: " + size);
+		logger.info("Browser window size set to: " + getDriver().manage().window().getSize());
 		// Navigate to URL
 		/*
 		 * try { getDriver().get(prop.getProperty("url")); } catch (Exception e) {
@@ -211,10 +218,10 @@ public class BaseClass {
 		boolean dockerActive = Boolean.parseBoolean(prop.getProperty("dockerActive"));
 		if (seleniumGrid && dockerActive) {
 			getDriver().get(prop.getProperty("url_docker"));
-			logger.info("Navigating to Docker URL: "+ prop.getProperty("url_docker"));
+			logger.info("Navigating to Docker URL: "+ driver.get().getCurrentUrl());
 		} else {
 			getDriver().get(prop.getProperty("url_local"));
-			logger.info("Navigating to Local URL: "+ prop.getProperty("url_local"));
+			logger.info("Navigating to Local URL: "+ driver.get().getCurrentUrl());
 		}
 	}
 
