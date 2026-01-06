@@ -1,0 +1,45 @@
+pipeline { 
+    agent any  
+
+    tools {
+        maven 'maven-3.9.11' //Check the version in Jenkins Global Tool Configuration
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/tonysaha007/DemoProject.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'mvn clean install -f Demo-Automation-Project/pom.xml'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+
+        stage('Reports') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'Demo-Automation-Project/src/test/resources/ExtentReport',  
+                    reportFiles: 'ExtentReport.html',  
+                    reportName: 'Extent Spark Report'
+                ])
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/Demo-Automation-Project/src/test/resources/ExtentReport/*.html', fingerprint: true
+            junit 'Demo-Automation-Project/target/surefire-reports/*.xml'
+        }
+
+    }
+}
