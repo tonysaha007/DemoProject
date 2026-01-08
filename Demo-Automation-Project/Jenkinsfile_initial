@@ -40,6 +40,13 @@ pipeline {
             archiveArtifacts artifacts: '**/Demo-Automation-Project/src/test/resources/ExtentReport/*.html', fingerprint: true
             junit 'Demo-Automation-Project/target/surefire-reports/*.xml'
         }
-
+        
+        success {
+            echo 'The build was successful!'
+        }
+        
+        failure {
+            echo 'The build failed.'
+        }
     }
 }
