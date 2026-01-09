@@ -98,6 +98,7 @@ public class BaseClass {
 		boolean seleniumGrid = Boolean.parseBoolean(prop.getProperty("seleniumGrid"));
 		
 		String gridURL = prop.getProperty("gridURL");
+		boolean headlessMode = Boolean.parseBoolean(prop.getProperty("headlessMode"));
 
 		if (seleniumGrid) {
 			try {
@@ -127,7 +128,7 @@ public class BaseClass {
 
 				// Create ChromeOptions
 				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless=new"); // Run Chrome in headless mode
+				if(headlessMode) options.addArguments("--headless=new"); // Run Chrome in headless mode
 				options.addArguments("--disable-gpu"); // Disable GPU for headless mode
 				options.addArguments("--window-size=1920,1080"); // Set window size
 				options.addArguments("--disable-notifications"); // Disable browser notifications
@@ -142,7 +143,7 @@ public class BaseClass {
 
 				// Create FirefoxOptions
 				FirefoxOptions options = new FirefoxOptions();
-				options.addArguments("--headless"); // Run Firefox in headless mode
+				if(headlessMode) options.addArguments("--headless"); // Run Firefox in headless mode
 				options.addArguments("--disable-gpu"); // Disable GPU rendering (useful for headless mode)
 				options.addArguments("--width=1920"); // Set browser width
 				options.addArguments("--height=1080"); // Set browser height
@@ -158,7 +159,7 @@ public class BaseClass {
 				
 
 				EdgeOptions options = new EdgeOptions();
-				options.addArguments("--headless=new"); // Run Edge in headless mode
+				if(headlessMode) options.addArguments("--headless=new"); // Run Edge in headless mode
 				options.addArguments("--disable-gpu"); // Disable GPU acceleration
 				options.addArguments("--window-size=1920,1080"); // Set window size. Some time can't rely on this line
 				options.addArguments("--force-device-scale-factor=1"); // Ensure consistent scaling
