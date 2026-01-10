@@ -64,9 +64,12 @@ pipeline {
             echo 'The build was successful!'
 			emailext(
 			    to: 'tony.ez007@gmail.com',
-			    subject: "✅ Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+			    subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 			    body: """
 			    <html>
+			    <head>
+        		<meta charset="UTF-8">
+    			</head>
 			    <body style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:20px;">
 			        <table align="center" width="600" style="background:#ffffff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
 			            <tr>
@@ -120,7 +123,8 @@ pipeline {
 			    """,
 			    mimeType: 'text/html',
 			    attachLog: true,
-			    attachmentsPattern: 'Demo-Automation-Project/logs/app.log'
+			    attachmentsPattern: 'Demo-Automation-Project/logs/app.log' // Adjust path as needed
+			    charset: 'UTF-8'
 			)
         }
         
