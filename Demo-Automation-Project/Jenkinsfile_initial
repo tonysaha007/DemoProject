@@ -120,8 +120,8 @@ pipeline {
 			    """,
 			    mimeType: 'text/html',
 			    attachLog: true,
-			    attachmentsPattern: '**/Demo-Automation-Project/logs/app.log'
-			    attachmentsPattern: '**/Demo-Automation-Project/logs/error.log'
+			    attachmentsPattern: 'Demo-Automation-Project/logs/app.log'
+			    attachmentsPattern: 'Demo-Automation-Project/logs/error.log'
 			)
         }
         
