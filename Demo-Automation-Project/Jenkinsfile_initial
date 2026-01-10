@@ -67,8 +67,13 @@ pipeline {
 			    subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 			    body: """
 			    <html>
-			    <body style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:20px;">
-			        <table align="center" width="600" style="background:#f4f6f8; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+ 				<body style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:20px;">
+			            <table align="center" width="600"
+						cellpadding="0" cellspacing="0"
+						style="background:#ffffff;
+						border:1px solid #dcdcdc;
+						border-radius:8px;
+						box-shadow:0 2px 6px rgba(0,0,0,0.08);">
 			            <tr>
 			                <td style="padding:20px; text-align:center; background:#2ecc71; color:#ffffff; border-radius:8px 8px 0 0;">
 			                    <h2>Build Successful</h2>
