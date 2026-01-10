@@ -67,21 +67,18 @@ pipeline {
 			    subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
 			    body: """
 			    <html>
-			    <head>
-        		<meta charset="UTF-8">
-    			</head>
 			    <body style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:20px;">
-			        <table align="center" width="600" style="background:#ffffff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+			        <table align="center" width="600" style="background:#f4f6f8; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
 			            <tr>
 			                <td style="padding:20px; text-align:center; background:#2ecc71; color:#ffffff; border-radius:8px 8px 0 0;">
-			                    <h2>Build Successful ✅</h2>
+			                    <h2>Build Successful</h2>
 			                </td>
 			            </tr>
 			            <tr>
 			                <td style="padding:20px;">
-			                    <p>Hello <b>SQA Team</b>,</p>
+			                    <p>Hello <b>Automation Team</b>,</p>
 			
-			                    <p>The latest Jenkins build has completed successfully. 🎉</p>
+			                    <p>The latest Jenkins build #${env.BUILD_NUMBER} has completed successfully.</p>
 			
 			                    <table width="100%" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
 			                        <tr>
@@ -105,7 +102,7 @@ pipeline {
 			                    </table>
 			
 			                    <p style="margin-top:20px;">
-			                        📊 <b>Extent Report:</b><br/>
+			                        <b>Extent Report:</b><br/>
 			                        <a href="http://localhost:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}/artifact/Demo-Automation-Project/src/test/resources/ExtentReport/ExtentReport.html">
 			                            Click here to view report
 			                        </a>
