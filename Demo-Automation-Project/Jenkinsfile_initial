@@ -7,14 +7,13 @@ pipeline {
 	}
 
 	environment {
-
+		COMPOSE_PATH = "${WORKSPACE}/Demo-Automation-Project/docker" // 🔁 Adjust if compose file is elsewhere
+        SELENIUM_GRID = "true"
 	} 
 	    
     stages {
 
 		stage('Environment Setup') {
-		COMPOSE_PATH = "${WORKSPACE}/Demo-Automation-Project/docker" // 🔁 Adjust if compose file is elsewhere
-        SELENIUM_GRID = "true"	
 		    	steps {
 	                script {
 	                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml up -d"
