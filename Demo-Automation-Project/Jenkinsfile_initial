@@ -6,7 +6,7 @@ pipeline {
 		stage('Setup Tools and Environment') {
 			    tools {
 	        		maven 'maven-3.9.11' //Check the version in Jenkins Global Tool Configuration
-	        		bat 'mvn -version' // Verify Maven installation
+	        		//bat 'mvn -version' // Verify Maven installation
 	        		echo 'Maven tool configured.'
 	    		}
 	    
