@@ -136,13 +136,19 @@ Developer (Eclipse IDE)
 ## 🛠️ Project Setup & Execution
 1. Install Java 17, Maven, Docker, Jenkins
 2. Clone the repository
-3. Import project into Eclipse as Maven project
-4. Run `mvn clean install`
-5. Ensure OrangeHRM web application is running locally
-6. Push code changes to GitHub
-7. Jenkins auto-triggers pipeline via webhook
-8. Monitor Jenkins console logs
-9. Receive execution report via email 
+3. Import the project into Eclipse as a Maven project
+6. Ensure OrangeHRM web application is running locally
+4. Change configuration property settings to run locally
+5. Run `mvn clean install`
+6. Change configuration property settings to run under Dockerized Selinium-Grid \
+	`seleniumGrid=true` \
+	`dockerActive=true` \
+	`headlessMode=true`
+7. Configured Jenkins pipeline project
+8. Push code changes to GitHub
+9. Jenkins auto-triggers pipeline via webhook
+10. Monitor Jenkins console logs
+11. Receive execution report via email 
 
 ## 🏁 Final Notes
 This framework demonstrates **enterprise-level automation design**, CI/CD integration, and scalable test execution suitable for real-world projects.
