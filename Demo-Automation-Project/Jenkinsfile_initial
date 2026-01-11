@@ -1,27 +1,25 @@
 pipeline { 
-    agent any  
+    agent any 
+    
+	tools {
+		maven 'maven-3.9.11' //Check the version in Jenkins Global Tool Configuration
+		//bat 'mvn -version' // Verify Maven installation
+	}
+
+	environment {
+        COMPOSE_PATH = "${WORKSPACE}/Demo-Automation-Project/docker" // 🔁 Adjust if compose file is elsewhere
+        SELENIUM_GRID = "true"
+	} 
 	    
     stages {
 		
 		stage('Setup Tools and Environment') {
-			    tools {
-	        		maven 'maven-3.9.11' //Check the version in Jenkins Global Tool Configuration
-	        		//bat 'mvn -version' // Verify Maven installation
-	        		echo 'Maven tool configured.'
-	    		}
-	    
-				environment {
-			        COMPOSE_PATH = "${WORKSPACE}/Demo-Automation-Project/docker" // 🔁 Adjust if compose file is elsewhere
-			        SELENIUM_GRID = "true"
-			        echo "Environment setup complete. COMPOSE_PATH set to ${COMPOSE_PATH}"
-		    	}
-		    	
 		    	steps {
 	                script {
-	                    echo "Starting Selenium Grid with Docker Compose..."
 	                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml up -d"
 	                    echo "Waiting for Selenium Grid to be ready..."
 	                    sleep 30 // Add a wait if needed
+	                    echo "Environment setup complete. COMPOSE_PATH set to ${COMPOSE_PATH}"
 	                }
             	}
 	    }
