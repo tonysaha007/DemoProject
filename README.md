@@ -20,6 +20,7 @@ The framework is designed **to simulate real-world enterprise automation project
 - Log4j2 logging
 - Jenkins CI/CD integration
 - Dockerized Selenium Grid execution
+- Automated test execution reporting
 
 ## 🧪 Test Types Covered
 - UI Tests
