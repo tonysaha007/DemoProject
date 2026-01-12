@@ -138,7 +138,7 @@ Developer (Eclipse IDE)
 2. Clone the repository
 3. Import the project into Eclipse as a Maven project
 6. Ensure OrangeHRM web application is running locally
-4. Change configuration property settings to run locally
+4. Change configuration property settings to run locally \
    	`seleniumGrid=false` \
 	`dockerActive=false` \
 	`headlessMode=true`
