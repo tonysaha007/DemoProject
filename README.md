@@ -55,14 +55,14 @@ Demo-Automation-Project
 |
 |---- src/main/java
 |   |---- com.orangehrm.actiondriver →|Reusable WebDriver actions|
-|       |---- ActionDriver.java
+|   |    |---- ActionDriver.java
 |   |---- com.orangehrm.base →|Base test setup & teardown|
-|       |---- BaseClass.java
+|   |   |---- BaseClass.java
 |   |---- com.orangehrm.listeners →|TestNG listeners (retry, reports)|
-|       |---- TestListener.java
+|   |   |---- TestListener.java
 |   |---- com.orangehrm.pages →|Page Object classes|
-|       |---- HomePage.java
-|       |---- LoginPageTest.java
+|   |   |---- HomePage.java
+|   |   |---- LoginPageTest.java
 |   |---- com.orangehrm.utilities →|Helpers (config, waits, utils)|
 |       |---- ApiUtility.java
 |       |---- DataProvider.java
@@ -85,7 +85,7 @@ Demo-Automation-Project
 |
 |---- src/test/resources
 |   |---- ExtentReport →|HTML execution reports|
-|   	|---- ExtentReport.html
+|   |	|---- ExtentReport.html
 |   |----  screenshots →|Stores screenshots|
 |   |---- testdata →|Data-driven test files|
 |   	|---- TestData.xlsx
@@ -139,16 +139,19 @@ Developer (Eclipse IDE)
 3. Import the project into Eclipse as a Maven project
 6. Ensure OrangeHRM web application is running locally
 4. Change configuration property settings to run locally
-5. Run `mvn clean install`
-6. Change configuration property settings to run under Dockerized Selinium-Grid \
+   	`seleniumGrid=false` \
+	`dockerActive=false` \
+	`headlessMode=true`
+6. Run `mvn clean install`
+7. Change configuration property settings to run under Dockerized Selinium-Grid \
 	`seleniumGrid=true` \
 	`dockerActive=true` \
 	`headlessMode=true`
-7. Configured Jenkins pipeline project
-8. Push code changes to GitHub
-9. Jenkins auto-triggers pipeline via webhook
-10. Monitor Jenkins console logs
-11. Receive execution report via email 
+8. Configured Jenkins pipeline project
+9. Push code changes to GitHub
+10. Jenkins auto-triggers pipeline via webhook
+11. Monitor Jenkins console logs
+12. Receive execution report via email 
 
 ## 🏁 Final Notes
 This framework demonstrates **enterprise-level automation design**, CI/CD integration, and scalable test execution suitable for real-world projects.
