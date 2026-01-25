@@ -134,25 +134,40 @@ Developer (Eclipse IDE)
 		|-- 9. Post Action - Email Notification (Success / Failure)
 		|-END
 ```
-## 🛠️ Project Setup & Execution
-1. Install Java 17, Maven, Docker, Jenkins
-2. Clone the repository
-3. Import the project into Eclipse as a Maven project
-6. Ensure OrangeHRM web application is running locally
-4. Change configuration property settings to run locally \
-   	`seleniumGrid=false` \
-	`dockerActive=false` \
+## 🛠️ Project Setup & Execution steps
+1. Install Java 17, Maven 3.9.11, and add system environment variables for Java and Maven.
+2. Locally host OrangeHRM Test site using XAMPP.
+3. Install Jenkins 2.528.3,  Docker Desktop
+4. Make sure Docker.Desktop, Jenkins are up and running (locally)
+5. Setup ngrok to Forward locally hosted Jenkins, accessible globally for webhook communications.
+6. Make sure Jenkins site (http://localhost:8080/) is accessible globally and locally:
+7. XAMPP, Jenkins and Docker should be up and running. Check the OrangeHRM Test site is accessible through web browsers. 
+8. Clone the project from GitHub repository.
+9. Change the following to make sure it does not overlap or duplicate with existing Eclipse projects (Optional)
+10. Import the project into Eclipse as a Maven project.
+11. Change the configuration property file's settings to run locally.
+12. Check if the project is good to go.	
+	d. Run Project As Maven clean - Verify "BUILD SUCCESS"
+	e. Run Project As Maven install - Verify "BUILD SUCCESS"
+13. Create a GitHub Repository
+14. Push project to GitHub repo (Initial commit)
+15. Configure Git Webhook for the repo.
+16. Ensure the OrangeHRM web application is running locally
+17. Change configuration property settings to run under Dockerized Selenium-Grid
+	`seleniumGrid=false`
+	`dockerActive=false`
 	`headlessMode=true`
-6. Run `mvn clean install`
-7. Change configuration property settings to run under Dockerized Selinium-Grid \
-	`seleniumGrid=true` \
-	`dockerActive=true` \
-	`headlessMode=true`
-8. Configured Jenkins pipeline project
-9. Push code changes to GitHub
-10. Jenkins auto-triggers pipeline via webhook
-11. Monitor Jenkins console logs
-12. Receive execution report via email 
+18. Configured Jenkins pipeline project enabling triggering with webhook
+	a. Pipeline script from SCM with trigger webhook
+	b. Repo link, Branch, Script Path
+19. Adjust Environment Parameters in 'Jenkinsfile' as per the project's specifications.
+20. Push code changes to GitHub and minimize Eclipse.
+21. Immediately Observe the Project section. Jenkins will auto-triggers build process of the pipeline 
+22. Monitor Jenkins console logs
+23. Necessary docker container will be created and Monitor Selenium-Grid
+24. Wait for execution to end.
+25. Receive execution report via email
+26. View email and reports.
 
 ## 🏁 Final Notes
 This framework demonstrates **enterprise-level automation design**, CI/CD integration, and scalable test execution suitable for real-world projects.
