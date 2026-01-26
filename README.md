@@ -146,16 +146,16 @@ Developer (Eclipse IDE)
 9. Change the following to make sure it does not overlap or duplicate with existing Eclipse projects (Optional)
 10. Import the project into Eclipse as a Maven project.
 11. Change the configuration property file's settings to run locally.
-12. Check if the project is good to go.	
-	d. Run Project As Maven clean - Verify "BUILD SUCCESS"
-	e. Run Project As Maven install - Verify "BUILD SUCCESS"
+12. Check if the project is good to go.	\
+	`d. Run Project As Maven clean - Verify "BUILD SUCCESS"` \
+	`e. Run Project As Maven install - Verify "BUILD SUCCESS"`
 13. Create a GitHub Repository
 14. Push project to GitHub repo (Initial commit)
 15. Configure Git Webhook for the repo.
 16. Ensure the OrangeHRM web application is running locally
-17. Change configuration property settings to run under Dockerized Selenium-Grid
-	`seleniumGrid=false`
-	`dockerActive=false`
+17. Change configuration property settings to run under Dockerized Selenium-Grid \
+	`seleniumGrid=false` \
+	`dockerActive=false` \
 	`headlessMode=true`
 18. Configured Jenkins pipeline project enabling triggering with webhook
 	a. Pipeline script from SCM with trigger webhook
